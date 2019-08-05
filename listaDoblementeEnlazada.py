@@ -75,7 +75,7 @@ class listaDobleEnlazada:
 
     
 
-
+'''
 if __name__ == "__main__":
     lsDoble = listaDobleEnlazada()
     lsDoble.addHead(0,0)
@@ -86,4 +86,5 @@ if __name__ == "__main__":
     lsDoble.addFinal(0,3)
     print("tamanio de la lista: " + str(lsDoble.getSizeLista()) )
     lsDoble.printLista()
+'''
    
