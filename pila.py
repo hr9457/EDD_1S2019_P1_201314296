@@ -25,8 +25,8 @@ class pila:
             self.sizePila += 1
         else:
             nuevoNodo = NodoPila(posX,posY)
-            self.ultimoPila.siguientePila = nuevoNodo
-            self.ultimoPila = nuevoNodo
+            nuevoNodo.siguientePila = self.primeroPila
+            self.primeroPila = nuevoNodo
             self.sizePila += 1
 
     # metodo para retornar el tamanio de la pila
@@ -40,10 +40,10 @@ class pila:
             temporalSize -= 1
             print(primerElemento.posY)
             primerElemento = primerElemento.siguientePila
+        
             
 
 
-''''
 # clse de arranque
 # prueba de pila
 if __name__ == "__main__":
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     p.Pop(1,3)
     print("elementos en la pila: "+  str(p.getSizePila())  )
     p.printPila()
-''''
+
 
 
 
