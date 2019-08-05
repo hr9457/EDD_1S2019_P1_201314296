@@ -17,7 +17,7 @@ class pila:
         self.sizePila = 1
 
     # metodo para insertar en la pila
-    def Pop(self,posX,posY):
+    def Push(self,posX,posY):
         if self.ultimoPila == None:
             nuevoNodo = NodoPila(posX,posY)
             self.primeroPila = nuevoNodo
@@ -28,6 +28,22 @@ class pila:
             nuevoNodo.siguientePila = self.primeroPila
             self.primeroPila = nuevoNodo
             self.sizePila += 1
+
+    # metodo para eliminar al principio de la pila
+    def Pop(self):
+        if self.primeroPila == None:
+            print("la pila no contiene elemento ")
+        elif self.primeroPila == self.ultimoPila:
+            self.primerElemento = None
+            self.ultimoPila = None
+            self.sizePila -= 1
+        else:
+            temporal = self.primeroPila
+            self.primeroPila = self.primeroPila.siguientePila
+            temporal = None
+            self.sizePila -= 1
+            
+
 
     # metodo para retornar el tamanio de la pila
     def getSizePila(self):
@@ -49,9 +65,12 @@ class pila:
 if __name__ == "__main__":
     p = pila()
     
-    p.Pop(1,1)
-    p.Pop(1,2)
-    p.Pop(1,3)
+    p.Push(1,1)
+    p.Push(1,2)
+    p.Push(1,3)
+    print("elementos en la pila: "+  str(p.getSizePila())  )
+    p.printPila()
+    p.Pop()
     print("elementos en la pila: "+  str(p.getSizePila())  )
     p.printPila()
 
