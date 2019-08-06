@@ -1,12 +1,4 @@
 digraph{
 rankdir=LR;
-subgraph cluster_0{color = lightgrey; node[shape=rectangle]
-Nodo0[label=" josue"];
-Nodo1[label=" orozco"];
-Nodo2[label=" hector"];
-Nodo2->Nodo1
-Nodo1->Nodo0
-Nodo0->Null
-label = "Lista enlazada simple";
-}
-}
+subgraph cluster_0{node[shape=record]
+ NodoNull[ label = " {null} " ]; 

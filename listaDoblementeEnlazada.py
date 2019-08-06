@@ -71,11 +71,67 @@ class listaDobleEnlazada:
 
     def prubaPrint(self):
         print(self.colaLista.getPosY())
+
+
+    # metodo para genera el reporte de la lista
+    def GraListasDobleEnlazada(self):
+        #-----------------------------------------------------------------------------------------------------
+        #lectura del archivo y limpiado del archivo
+        #LDE - LISTA DOBLEMENTE ENLAZADA 
+        archivo_texto = open("LDE.txt","r")
+        lineas = archivo_texto.readlines()
+        archivo_texto.close()
+        #vaciado del archivo 
+        archivo_texto = open("LDE.txt","w")
+        for lineas in lineas:
+            archivo_texto.write("")
+        archivo_texto.close()
+        #------------------------------------------------------------------------------------------------------
+
+        #sobre-escritura  para genera graphviz
+        archivo_texto = open("LDE.txt","w")
+        archivo_texto.write("digraph{\n")#encabezado
+        archivo_texto.write("rankdir=LR;\n")#direccion 
+        archivo_texto.write("subgraph cluster_0{node[shape=record]\n")#poscion del titulo
+        archivo_texto.write(" NodoNull[ label = \" {null} \" ]; \n")#nodo por defecto para apuntar a null al principio de la lista
+        #ciclo para la impresion de los elementos en la lista
+
+        # variable para enumerar los nodos
+        numeroNodo = 0
+        # variable temporal para saber el tamanio de la lista
+        sizeTemporal = self.sizeListaDoble
+        # nodo temporal obtener la informacion desde la cola de la lista
+        nodoTemporal = self.colaLista
+        while  sizeTemporal >= 1:
+            sizeTemporal -= 1
+            archivo_texto.write(" Nodo" + str(numeroNodo) + " [label= \" {| " + str(nodoTemporal.posX) 
+                                + "," + str(nodoTemporal.posY) + " |} \" ];\n" )
+            nodoTemporal = nodoTemporal.siguiente 
+            numeroNodo += 1
+            if sizeTemporal <= 0:
+                archivo_texto.write(" NodoNull->Nodo0 \n")
+                archivo_texto.write(" Nodo0->NodoNull \n")
+                #ciclo para hacer los apuntadores
+                numeroNodo = 0
+                while sizeTemporal+1 < self.sizeListaDoble:
+                    archivo_texto.write(" Nodo"+str(numeroNodo)+"-> Nodo"+str(numeroNodo+1)+"\n" )
+                    archivo_texto.write(" Nodo"+str(numeroNodo+1)+"->Nodo"+str(numeroNodo)+"\n" )
+                    numeroNodo += 1
+                    sizeTemporal += 1
+                    #fin del ciclo while    
+                break # break cierre del if               
+        # fin del primer ciclo while
+        #union del ultimo nodo a null
+        archivo_texto.write(" Nodo"+str(numeroNodo)+"->Null\n")
+        archivo_texto.write("label = \"Lista Doblemente Enlazada\";\n")#titulo del grap lista
+        archivo_texto.write("}\n")#
+        archivo_texto.write("}\n")#
+        archivo_texto.close()#cierre del archivo
+       
             
 
     
 
-'''
 if __name__ == "__main__":
     lsDoble = listaDobleEnlazada()
     lsDoble.addHead(0,0)
@@ -84,7 +140,10 @@ if __name__ == "__main__":
     print("tamanio de la lista: " + str(lsDoble.getSizeLista()) )
     lsDoble.printLista()
     lsDoble.addFinal(0,3)
+    lsDoble.addHead(0,4)
     print("tamanio de la lista: " + str(lsDoble.getSizeLista()) )
     lsDoble.printLista()
-'''
+    lsDoble.GraListasDobleEnlazada()
+
+
    

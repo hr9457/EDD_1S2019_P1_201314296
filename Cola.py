@@ -69,7 +69,8 @@ class Cola:
 
 
     def GraCola(self):
-        #lectura del archivo
+        #-----------------------------------------------------------------------------------------------------
+        #lectura del archivo y limpiado del archivo
         archivo_texto = open("Cola.txt","r")
         lineas = archivo_texto.readlines()
         archivo_texto.close()
@@ -78,11 +79,13 @@ class Cola:
         for lineas in lineas:
             archivo_texto.write("")
         archivo_texto.close()
-        #escritura  para genera graphviz
+        #------------------------------------------------------------------------------------------------------
+        
+        #sobre-escritura  para genera graphviz
         archivo_texto = open("Cola.txt","w")
         archivo_texto.write("digraph{\n")#encabezado
         archivo_texto.write("rankdir=LR;\n")#direccion 
-        archivo_texto.write("subgraph cluster_0{color = lightgrey; node[shape=rectangle]\n")#poscion del titulo
+        archivo_texto.write("subgraph cluster_0{color = lightgrey; node[shape=record]\n")#poscion del titulo
         #recorrimiento de la lista
         # variable temporal
         primeroTemporal = self.primeroCola
@@ -90,7 +93,7 @@ class Cola:
         temporalSize = self.sizeCola
         numeroDeNodo = 0 # variable para enumerar los nodos
         while temporalSize > 0:
-            archivo_texto.write("Nodo"+str(numeroDeNodo)+"[label=\" "+str(primeroTemporal.nombreUsuario)+"\"];\n")
+            archivo_texto.write("Nodo"+str(numeroDeNodo)+"[label=\" { "+str(primeroTemporal.nombreUsuario)+","+ str(primeroTemporal.score)+ " | } \"];\n" )
             primeroTemporal = primeroTemporal.siguienteCola
             numeroDeNodo += 1 #aumenta el numero del nodo
             temporalSize -= 1 #disminue el numero para recorrer la lista
@@ -105,11 +108,10 @@ class Cola:
         #fin del ciclo while
         archivo_texto.write("Nodo"+str(numeroDeNodo)+"->Null\n")
         #fin del recorrido de la cola    
-        archivo_texto.write("label = \"Lista enlazada simple\";\n")#
+        archivo_texto.write("label = \" Cola \";\n")#titulo del grafo
         archivo_texto.write("}\n")#
         archivo_texto.write("}\n")#
         archivo_texto.close()#cierre del archivo
-
 
 
 """"
@@ -126,3 +128,4 @@ if __name__ == "__main__":
     c.addCola("hector","1")
     c.GraCola()
     """""
+
