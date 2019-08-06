@@ -69,10 +69,47 @@ class Cola:
 
 
     def GraCola(self):
+        #lectura del archivo
+        archivo_texto = open("Cola.txt","r")
+        lineas = archivo_texto.readlines()
+        archivo_texto.close()
+        #vaciado del archivo 
+        archivo_texto = open("Cola.txt","w")
+        for lineas in lineas:
+            archivo_texto.write("")
+        archivo_texto.close()
+        #escritura  para genera graphviz
+        archivo_texto = open("Cola.txt","w")
+        archivo_texto.write("digraph{\n")#encabezado
+        archivo_texto.write("rankdir=LR;\n")#direccion 
+        archivo_texto.write("subgraph cluster_0{color = lightgrey; node[shape=rectangle]\n")#poscion del titulo
+        #recorrimiento de la lista
+        # variable temporal
+        primeroTemporal = self.primeroCola
+        # tamanio acutal de la cola
+        temporalSize = self.sizeCola
+        numeroDeNodo = 0 # variable para enumerar los nodos
+        while temporalSize > 0:
+            archivo_texto.write("Nodo"+str(numeroDeNodo)+"[label=\" "+str(primeroTemporal.nombreUsuario)+"\"];\n")
+            primeroTemporal = primeroTemporal.siguienteCola
+            numeroDeNodo += 1 #aumenta el numero del nodo
+            temporalSize -= 1 #disminue el numero para recorrer la lista
+            if temporalSize <= 0:
+                numeroDeNodo = 0 # variable para enumerar los nodos
+                while numeroDeNodo + 1  < self.sizeCola:
+                    archivo_texto.write("Nodo"+str(numeroDeNodo)+"->Nodo"+str(numeroDeNodo+1)+"\n")
+                    numeroDeNodo += 1
+        #fin del ciclo while
+        archivo_texto.write("Nodo"+str(numeroDeNodo)+"->Null\n")
+        #fin del recorrido de la cola    
+        archivo_texto.write("label = \"Lista enlazada simple\";\n")#
+        archivo_texto.write("}\n")#
+        archivo_texto.write("}\n")#
+        archivo_texto.close()#cierre del archivo
 
 
 
-""""
+
 if __name__ == "__main__":
     c = Cola()
     c.addCola("hector","1")
@@ -80,7 +117,7 @@ if __name__ == "__main__":
     c.addCola("orozco","3")
     print("el tamanio de la cola es: " + str( c.getSizeCola()) )
     c.printCola()
-    c.unqueued()
-    print("el tamanio de la cola es: " + str( c.getSizeCola()) )
-    c.printCola()
-"""""
+    #c.unqueued()
+    #print("el tamanio de la cola es: " + str( c.getSizeCola()) )
+    #c.printCola()
+    c.GraCola()

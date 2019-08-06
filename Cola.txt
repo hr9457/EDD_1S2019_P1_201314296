@@ -1,0 +1,12 @@
+digraph{
+rankdir=LR;
+subgraph cluster_0{color = lightgrey; node[shape=rectangle]
+Nodo0[label=" hector"];
+Nodo1[label=" josue"];
+Nodo2[label=" orozco"];
+Nodo0->Nodo1
+Nodo1->Nodo2
+Nodo2->Null
+label = "Lista enlazada simple";
+}
+}
