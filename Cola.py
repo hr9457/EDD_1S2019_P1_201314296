@@ -94,11 +94,14 @@ class Cola:
             primeroTemporal = primeroTemporal.siguienteCola
             numeroDeNodo += 1 #aumenta el numero del nodo
             temporalSize -= 1 #disminue el numero para recorrer la lista
+            #para la union de nodos
             if temporalSize <= 0:
-                numeroDeNodo = 0 # variable para enumerar los nodos
-                while numeroDeNodo + 1  < self.sizeCola:
-                    archivo_texto.write("Nodo"+str(numeroDeNodo)+"->Nodo"+str(numeroDeNodo+1)+"\n")
-                    numeroDeNodo += 1
+                numeroDeNodo = numeroDeNodo - 1 # variable para enumerar los nodos
+                while temporalSize +1   < self.sizeCola:
+                    archivo_texto.write("Nodo"+str(numeroDeNodo)+"->Nodo"+str(numeroDeNodo-1)+"\n")
+                    numeroDeNodo -= 1
+                    temporalSize += 1
+                break
         #fin del ciclo while
         archivo_texto.write("Nodo"+str(numeroDeNodo)+"->Null\n")
         #fin del recorrido de la cola    
@@ -109,7 +112,7 @@ class Cola:
 
 
 
-
+""""
 if __name__ == "__main__":
     c = Cola()
     c.addCola("hector","1")
@@ -117,7 +120,9 @@ if __name__ == "__main__":
     c.addCola("orozco","3")
     print("el tamanio de la cola es: " + str( c.getSizeCola()) )
     c.printCola()
-    #c.unqueued()
-    #print("el tamanio de la cola es: " + str( c.getSizeCola()) )
-    #c.printCola()
+    c.unqueued()
+    print("el tamanio de la cola es: " + str( c.getSizeCola()) )
+    c.printCola()
+    c.addCola("hector","1")
     c.GraCola()
+    """""
