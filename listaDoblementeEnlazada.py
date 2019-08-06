@@ -43,7 +43,7 @@ class listaDobleEnlazada:
             self.colaLista = nuevoNodo
             self.sizeListaDoble += 1
     
-    # metodo 
+    # metodo cuando come al final agrega a la cabeza de la lista
     def addFinal(self,posX,posY):
         # si la lista se encuentra vacia
         if self.cabezaLista == None and self.colaLista == None:

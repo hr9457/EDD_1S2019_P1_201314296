@@ -14,7 +14,7 @@ class pila:
     def __init__(self):
         self.primeroPila = None
         self.ultimoPila = None
-        self.sizePila = 1
+        self.sizePila = 0
 
     # metodo para insertar en la pila
     def Push(self,posX,posY):
@@ -49,10 +49,11 @@ class pila:
     def getSizePila(self):
         return self.sizePila
 
+    # metodo para imprimir la pila
     def printPila(self):
         temporalSize = self.sizePila
         primerElemento = self.primeroPila
-        while temporalSize > 1:
+        while temporalSize > 0:
             temporalSize -= 1
             print(primerElemento.posY)
             primerElemento = primerElemento.siguientePila
@@ -62,6 +63,7 @@ class pila:
 
 # clse de arranque
 # prueba de pila
+''''
 if __name__ == "__main__":
     p = pila()
     
@@ -73,6 +75,7 @@ if __name__ == "__main__":
     p.Pop()
     print("elementos en la pila: "+  str(p.getSizePila())  )
     p.printPila()
+''''
 
 
 
