@@ -131,7 +131,7 @@ class listaDobleEnlazada:
             
 
     
-
+""""
 if __name__ == "__main__":
     lsDoble = listaDobleEnlazada()
     lsDoble.addHead(0,0)
@@ -144,6 +144,7 @@ if __name__ == "__main__":
     print("tamanio de la lista: " + str(lsDoble.getSizeLista()) )
     lsDoble.printLista()
     lsDoble.GraListasDobleEnlazada()
+    """"
 
 
    

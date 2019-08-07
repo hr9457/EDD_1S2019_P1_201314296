@@ -57,13 +57,47 @@ class pila:
             temporalSize -= 1
             print(primerElemento.posY)
             primerElemento = primerElemento.siguientePila
+
+
+    # metodo para graficar reporte de la pila
+    def GraPila(self):
+        #-----------------------------------------------------------------------------------------------------
+        #lectura del archivo y limpiado del archivo
+        archivo_texto = open("Pila.txt","r")
+        lineas = archivo_texto.readlines()
+        archivo_texto.close()
+        #vaciado del archivo 
+        archivo_texto = open("Pila.txt","w")
+        for lineas in lineas:
+            archivo_texto.write("")
+        archivo_texto.close()
+        #-----------------------------------------------------------------------------------------------------
         
+        # sobrescritura del archivo para generar la grafica
+        archivo_texto = open("Pila.txt","w")
+        archivo_texto.write("digraph structs {\n")
+        archivo_texto.write("rankdir = LR;\n")#direccion
+        archivo_texto.write("node[shape=record];\n")#tipo de grafo
+        archivo_texto.write("struct[ label = \" | ")
+        #variable para recorrer la pilaa
+        sizeTemporal = self.sizePila
+        primerElemento = self.primeroPila
+        while sizeTemporal > 0:
+            archivo_texto.write(""+str(primerElemento.posX)+","+str(primerElemento.posY))
+            sizeTemporal -= 1
+            primerElemento = primerElemento.siguientePila
+            if sizeTemporal >= 1:
+                archivo_texto.write("|")
+        #fin del ciclo while
+        archivo_texto.write("\"]\n")
+        archivo_texto.write("}\n")#cierre del grafo
+        archivo_texto.close()#cierre del archivo
             
 
 
 # clse de arranque
 # prueba de pila
-''''
+
 if __name__ == "__main__":
     p = pila()
     
@@ -73,9 +107,10 @@ if __name__ == "__main__":
     print("elementos en la pila: "+  str(p.getSizePila())  )
     p.printPila()
     p.Pop()
-    print("elementos en la pila: "+  str(p.getSizePila())  )
+    #print("elementos en la pila: "+  str(p.getSizePila())  )
     p.printPila()
-''''
+    p.GraPila()
+
 
 
 
