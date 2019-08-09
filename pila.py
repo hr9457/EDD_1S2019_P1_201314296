@@ -97,7 +97,7 @@ class pila:
 
 # clse de arranque
 # prueba de pila
-
+""""
 if __name__ == "__main__":
     p = pila()
     
@@ -110,6 +110,7 @@ if __name__ == "__main__":
     #print("elementos en la pila: "+  str(p.getSizePila())  )
     p.printPila()
     p.GraPila()
+    """"
 
 
 

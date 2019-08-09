@@ -38,13 +38,13 @@ class listaCircularDoblementeEnlazada:
 
     # metodo para agregar a la lista
     def addLCDE(self,nombreUsuario):
-        if self.cabezaLista = None and self.colaLista = None:
+        if  self.colaLista == None:
             nuevoNodo = Nodo(nombreUsuario)
             self.cabezaLista = nuevoNodo
             self.colaLista = nuevoNodo
-            nuevoNodo.siguienteLCDE = self.cabezaLista
-            nuevoNodo.anteriorLCDE = self.colaLista
-            sizeLCDE += 1
+            nuevoNodo.siguienteLCDE = self.colaLista
+            nuevoNodo.anteriorLCDE = self.cabezaLista
+            self.sizeLCDE += 1
         else:
             nuevoNodo = Nodo(nombreUsuario)
             nuevoNodo.anteriorLCDE = self.colaLista
@@ -52,3 +52,10 @@ class listaCircularDoblementeEnlazada:
             self.colaLista = nuevoNodo
             self.colaLista.siguienteLCDE = self.cabezaLista
             self.cabezaLista.anteriorLCDE = self.colaLista
+            self.sizeLCDE += 1
+
+
+if __name__ == "__main__":
+    lcde = listaCircularDoblementeEnlazada()
+    lcde.addLCDE("hector")
+    lcde.addLCDE("josue")
