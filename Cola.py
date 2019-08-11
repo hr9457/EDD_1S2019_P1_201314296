@@ -49,8 +49,6 @@ class Cola:
             self.sizeCola -= 1
 
 
-
-
     #  get tamaniio de la cola actual
     def getSizeCola(self):
         return self.sizeCola

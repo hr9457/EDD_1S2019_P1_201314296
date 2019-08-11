@@ -30,11 +30,7 @@ class listaCircularDoblementeEnlazada:
         self.cabezaLista = None
         self.colaLista = None
         self.sizeLCDE = 0
-
-    # metodo para devolver el tamanio de la lista
-    def getSizeLCDE(self):
-        return self.sizeLCDE
-
+        self.inicio = None
 
     # metodo para agregar a la lista
     def addLCDE(self,nombreUsuario):
@@ -54,8 +50,28 @@ class listaCircularDoblementeEnlazada:
             self.cabezaLista.anteriorLCDE = self.colaLista
             self.sizeLCDE += 1
 
+    def printLCDE(self):
+        temporal = self.cabezaLista
+        print(temporal.nombreUsuario)
+        temporal = temporal.siguienteLCDE
+        print(temporal.nombreUsuario)
+        temporal = temporal.siguienteLCDE
+        print(temporal.nombreUsuario)
 
-if __name__ == "__main__":
-    lcde = listaCircularDoblementeEnlazada()
-    lcde.addLCDE("hector")
-    lcde.addLCDE("josue")
+
+    def siguiente():
+        actual = self.cabezaLista
+        print (actual)
+
+    # metodo para devolver el tamanio de la lista
+    def getSizeLCDE(self):
+        return self.sizeLCDE
+
+    def getCabeza(self):
+        return self.cabezaLista
+
+    def getCola(self):
+        return self.colaLista
+
+    def getInicio(self):
+        return self.inicio

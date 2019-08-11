@@ -3,9 +3,9 @@ import time
 from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN #import special KEYS from the curses library
 import snake
 import subprocess
-import os
-from listaCirular import *#importo todo lo de mi modulo de lista circulas 
-from cargaMasiva import *
+import os 
+import cargaMasiva
+from listaCircular import listaCircularDoblementeEnlazada
 
 def paint_menu(win):
     paint_title(win,' MAIN MENU ')          #paint title
@@ -42,11 +42,14 @@ paint_menu(window)      #paint menu
 keystroke = -1
 while(keystroke==-1):
     keystroke = window.getch()  #get current key being pressed
-    if(keystroke==49): #1
+    if(keystroke==49):
+        #---------------ingreso al snake----------------------
         usuario = ""
-        snake.inicioMenu(usuario)
+        window.refresh()
+        snake.inicioSnake(usuario)
         paint_menu(window)
         keystroke=-1
+        #----------------Fin snake-----------------------------
     elif(keystroke==50):
         paint_title(window, ' SCOREBOARD ')
         wait_esc(window)
@@ -63,10 +66,14 @@ while(keystroke==-1):
         paint_menu(window)
         keystroke=-1
     elif(keystroke==53):
-        #lista circular iniciazcion
-        paint_title(window,' BULK LOADING ')
+        #--------------------Carga masiva---------------------------
+        listaCDE = listaCircularDoblementeEnlazada()
+        window.clear()
+        window.refresh()
+        cargaMasiva.ventanaCargaMasiva(listaCDE)
         paint_menu(window)
         keystroke=-1
+        #----------------Fin Carga Masiva----------------------------
     elif(keystroke==54):
         pass
     else:
