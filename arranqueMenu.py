@@ -6,6 +6,7 @@ import subprocess
 import os 
 import cargaMasiva
 from listaCircular import listaCircularDoblementeEnlazada
+from listaDoblementeEnlazada import listaDobleEnlazada
 
 def paint_menu(win):
     paint_title(win,' MAIN MENU ')          #paint title
@@ -44,9 +45,10 @@ while(keystroke==-1):
     keystroke = window.getch()  #get current key being pressed
     if(keystroke==49):
         #---------------ingreso al snake----------------------
+        listaDE = listaDobleEnlazada()
         usuario = ""
         window.refresh()
-        snake.inicioSnake(usuario)
+        snake.inicioSnake(usuario,listaDE)
         paint_menu(window)
         keystroke=-1
         #----------------Fin snake-----------------------------

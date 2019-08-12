@@ -58,6 +58,37 @@ class listaDobleEnlazada:
             self.cabezaLista = nuevoNodo
             self.sizeListaDoble += 1
 
+    #elemento para elminar al final de la lista
+    def deletFinal(self):
+        if self.colaLista == None:
+            pass
+        elif self.colaLista == self.cabezaLista:
+            self.colaLista = None
+            self.cabezaLista = None
+            self.sizeListaDoble -= 1
+        else:
+            temporal = self.colaLista
+            self.colaLista = self.colaLista.siguiente
+            self.colaLista.anterior = None
+            temporal = None
+            self.sizeListaDoble -= 1
+
+    #metodo para eliminar un elemento al frente de la lista
+    def deletHead(self):
+        if self.cabezaLista == None:
+            pass
+        elif self.cabezaLista == self.colaLista:
+            self.cabezaLista = None
+            self.colaLista = None
+            self.sizeListaDoble -= 1
+        else:
+            temporal = self.cabezaLista
+            self.cabezaLista = self.cabezaLista.anterior
+            self.cabezaLista.siguiente = None
+            temporal = None
+            self.sizeListaDoble -= 1
+
+
     # metodo para imprimir la lista enlzada doble
     def printLista(self):
         nodoTemporal = self.colaLista
@@ -130,21 +161,13 @@ class listaDobleEnlazada:
        
             
 
-    
-""""
-if __name__ == "__main__":
-    lsDoble = listaDobleEnlazada()
-    lsDoble.addHead(0,0)
-    lsDoble.addHead(0,1)
-    lsDoble.addHead(0,2)
-    print("tamanio de la lista: " + str(lsDoble.getSizeLista()) )
-    lsDoble.printLista()
-    lsDoble.addFinal(0,3)
-    lsDoble.addHead(0,4)
-    print("tamanio de la lista: " + str(lsDoble.getSizeLista()) )
-    lsDoble.printLista()
-    lsDoble.GraListasDobleEnlazada()
-    """"
-
+#if __name__ == "__main__":
+    #l = listaDobleEnlazada()
+    #l.addHead(10,10)
+    #l.addHead(10,11)
+    #l.addHead(10,12)
+    #l.printLista()
+    #l.deletFinal()
+    #l.printLista()
 
    
