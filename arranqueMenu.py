@@ -5,8 +5,10 @@ import snake
 import subprocess
 import os 
 import cargaMasiva
-from listaCircular import listaCircularDoblementeEnlazada
-from listaDoblementeEnlazada import listaDobleEnlazada
+from listaCircular import listaCircularDoblementeEnlazada #para el uso de la carga masiva
+from listaDoblementeEnlazada import listaDobleEnlazada #par el reporte de las posicion del snake
+from pila import pila #para el score del snake
+from Cola import Cola #para mostra las primeras 10 puntuaciones
 
 def paint_menu(win):
     paint_title(win,' MAIN MENU ')          #paint title
@@ -45,10 +47,11 @@ while(keystroke==-1):
     keystroke = window.getch()  #get current key being pressed
     if(keystroke==49):
         #---------------ingreso al snake----------------------
+        ScorePila = pila()
         listaDE = listaDobleEnlazada()
         usuario = ""
         window.refresh()
-        snake.inicioSnake(usuario,listaDE)
+        snake.inicioSnake(usuario,listaDE,ScorePila)
         paint_menu(window)
         keystroke=-1
         #----------------Fin snake-----------------------------

@@ -1,3 +1,4 @@
+import os
 #clase nodo
 #estructra del nodo 
 class Nodo:
@@ -158,6 +159,14 @@ class listaDobleEnlazada:
         archivo_texto.write("}\n")#
         archivo_texto.write("}\n")#
         archivo_texto.close()#cierre del archivo
+
+
+    def imagenDot(self):
+        #creacon de la imagen dot
+        os.system("dot -Tpng  C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\LDE.txt -o C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\LDE.png ")
+        #apertura de la imagen dot
+        os.system("C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\LDE.png" )
+
        
             
 
@@ -169,5 +178,7 @@ class listaDobleEnlazada:
     #l.printLista()
     #l.deletFinal()
     #l.printLista()
+    #l.GraListasDobleEnlazada()
+    #l.imagenDot()
 
    

@@ -97,20 +97,19 @@ class pila:
 
 # clse de arranque
 # prueba de pila
-""""
-if __name__ == "__main__":
-    p = pila()
+
+#if __name__ == "__main__":
+    #p = pila()
     
-    p.Push(1,1)
-    p.Push(1,2)
-    p.Push(1,3)
-    print("elementos en la pila: "+  str(p.getSizePila())  )
-    p.printPila()
-    p.Pop()
+    #p.Push(1,1)
+    #p.Push(1,2)
+    #p.Push(1,3)
     #print("elementos en la pila: "+  str(p.getSizePila())  )
-    p.printPila()
-    p.GraPila()
-    """"
+    #p.printPila()
+    #p.Pop()
+    #print("elementos en la pila: "+  str(p.getSizePila())  )
+    #p.printPila()
+    #p.GraPila()
 
 
 
