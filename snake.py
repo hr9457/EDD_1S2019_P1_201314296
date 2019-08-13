@@ -5,7 +5,7 @@ import subprocess
 import os
 import random #librearia para genera numeros random
 
-
+#------------Generador de comida random en la pantalla--------------------------------------------------------
 def ComidaRandom(numFilas,numColum,ventana):
     posicionYRandom = random.randint(2,numFilas-2)
     posicionXRandom = random.randint(2,numColum-2)
@@ -17,8 +17,11 @@ def ComidaRandom(numFilas,numColum,ventana):
     else:
         tipoFood = 0 #para * el que produce un por en la pila
         return posicionYRandom ,posicionXRandom, tipoFood
+#-------------------------------------------------------------------------------------------------------------
 
 
+
+#--------pintuado del borde con titulos para el usuario--------------------------------------------------------
 def pintadoTituloVentana(ventana,score,usuario):
     ventana.clear()
     ventana.border(0)
@@ -26,8 +29,11 @@ def pintadoTituloVentana(ventana,score,usuario):
     ventana.addstr(0,40," SNAKE RELOADED ")
     nombre = str(usuario).replace("b'","")
     ventana.addstr(0, 70, " User : "+nombre.replace("'","")+" ")
+#-------------------------------------------------------------------------------------------------------------
     
 
+
+#--------pintado del snake y jugabilidad ----------------------------------------------------------------------
 def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel):
     direccionSnake = -1
     fooRandom = ""
@@ -42,11 +48,16 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
     pintadoTituloVentana(ventana,score,usuario)
 
     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
+    
     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
-    ventana.timeout(-1)#tiempor actualizacion me puede servir para los niveles en el snake
+    ventana.timeout(150)#tiempor actualizacion me puede servir para los niveles en el snake
 
+    
+    direccionSnake = 261
+    #ciclo que mantiene jugando al snake mientra sea diferente de esc=27 
     while direccionSnake !=27:
-
+        
+        
         #pintado del snake desde la cola hacia la cabeza de la lista - actualizacion de la pintado
         sizeTemporal = listaDE.getSizeLista()
         temporal = listaDE.cabezaLista
@@ -57,8 +68,9 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
             ventana.addstr(posicionEnY,posicionEnX,"#")
             temporal = temporal.anterior
         
+
         #opciones de entrdad por el  teclado
-        #direccionSnake = ventana.getch()
+        #direccionSnake = 261
         #-------------------------------------------------------Movimiento hacia la Derecha--------------------
         if direccionSnake == 261:
             head = listaDE.cabezaLista
@@ -333,17 +345,25 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
         if tamanioInicialSanke==2:
             break
         
-        direccionSnake = -1
-        direccionSnake = ventana.getch()
+
+        #direccionSnake = -1
+        cambioSnake = ventana.getch()
+        if cambioSnake==258 or cambioSnake==259 or cambioSnake==260 or cambioSnake==261 or cambioSnake ==27 or cambioSnake==112:
+            direccionSnake = cambioSnake
+            
         ventana.refresh()
 
     curses.endwin()
+    #generacion de escritura para genera los reportes
     listaDE.GraListasDobleEnlazada()
     Pila.GraPila()
 #-------------------------------fin del juego-----------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------
 
 
 
+
+#--------------------------Ventana de arranque - verificacion de usuario---------------------------------------
 def inicioSnake(usuario,listaDE,Pila):
     listaDE.addHead(10,40)
     listaDE.addHead(10,39)
@@ -365,4 +385,5 @@ def inicioSnake(usuario,listaDE,Pila):
 
     else:
         numFilas , numColum = screen.getmaxyx()
+#-------------------------------------------------------------------------------------------------------------
 

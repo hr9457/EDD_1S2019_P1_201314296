@@ -9,6 +9,7 @@ def menuReportes(ventana,X):
     ventana.addstr(7,X,"2. Score (Pila)")
     ventana.addstr(9,X,"3. Scoreboard (Cola)")
     ventana.addstr(11,X,"4. User (Lista Circular)")
+    ventana.addstr(13,x,"5. Salir (Esc)")
 
 
 def reportes(listaDE,Pila,listaCDE):
