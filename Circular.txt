@@ -1,0 +1,33 @@
+digraph{
+rankdir=LR;
+subgraph cluster_0{node[shape=record]
+ Nodo0 [label= " {<ant>| ['hector'] |<next>} " ];
+ Nodo1 [label= " {<ant>| ['Usuario'] |<next>} " ];
+ Nodo2 [label= " {<ant>| ['victor'] |<next>} " ];
+ Nodo3 [label= " {<ant>| ['mario'] |<next>} " ];
+ Nodo4 [label= " {<ant>| ['josue'] |<next>} " ];
+ Nodo5 [label= " {<ant>| ['carlos'] |<next>} " ];
+ Nodo6 [label= " {<ant>| ['randy'] |<next>} " ];
+ Nodo7 [label= " {<ant>| ['dennis'] |<next>} " ];
+ Nodo8 [label= " {<ant>| ['maria'] |<next>} " ];
+ Nodo0-> Nodo1
+ Nodo1->Nodo0
+ Nodo1-> Nodo2
+ Nodo2->Nodo1
+ Nodo2-> Nodo3
+ Nodo3->Nodo2
+ Nodo3-> Nodo4
+ Nodo4->Nodo3
+ Nodo4-> Nodo5
+ Nodo5->Nodo4
+ Nodo5-> Nodo6
+ Nodo6->Nodo5
+ Nodo6-> Nodo7
+ Nodo7->Nodo6
+ Nodo7-> Nodo8
+ Nodo8->Nodo7
+ Nodo0 -> Nodo8
+Nodo8 -> Nodo0
+label = "Lista Cirular";
+}
+}

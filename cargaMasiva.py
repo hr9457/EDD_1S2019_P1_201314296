@@ -64,4 +64,5 @@ def ventanaCargaMasiva(listaCDE):
         ventana.refresh()
 
     curses.endwin()
+    listaCDE.GraCircular()
 

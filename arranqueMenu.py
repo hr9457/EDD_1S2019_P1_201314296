@@ -74,9 +74,11 @@ while(keystroke==-1):
     elif(keystroke==52):
         listaDE = listaDobleEnlazada()
         Pila = pila()
+        listaCDE = listaCircularDoblementeEnlazada()
+
         window.clear()
         window.refresh()
-        ventanaReportes.reportes(listaDE,Pila)
+        ventanaReportes.reportes(listaDE,Pila,listaCDE)
         paint_menu(window)
         keystroke=-1
 

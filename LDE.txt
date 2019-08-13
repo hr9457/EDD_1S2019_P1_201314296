@@ -2,8 +2,8 @@ digraph{
 rankdir=LR;
 subgraph cluster_0{node[shape=record]
  NodoNull[ label = " {null} " ]; 
- Nodo0 [label= " {| 22,101 |} " ];
- Nodo1 [label= " {| 22,100 |} " ];
+ Nodo0 [label= " {| 7,45 |} " ];
+ Nodo1 [label= " {| 7,44 |} " ];
  NodoNull->Nodo0 
  Nodo0->NodoNull 
  Nodo0-> Nodo1

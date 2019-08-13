@@ -28,7 +28,7 @@ def pintadoTituloVentana(ventana,score,usuario):
     ventana.addstr(0, 70, " User : "+nombre.replace("'","")+" ")
     
 
-def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke):
+def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel):
     direccionSnake = -1
     fooRandom = ""
     tipoFood = ""
@@ -71,6 +71,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                 if headY == posicionYRandom and headX+1 == posicionXRandom and tipoFood==1: 
                     score +=1#puntuacion actual
                     tamanioInicialSanke +=1#tamnio acutal del snake para ver si perdio
+                    puntuacionMaxLevel +=1 #aumenta la puntacion para el siguiente nivel
 
                     ventana.addstr(headY,headX+1,"#")
                     listaDE.addFinal(headY,headX+1)
@@ -91,6 +92,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                 elif headY == posicionYRandom and headX+1 == posicionXRandom and tipoFood==0:
                     score -=1
                     tamanioInicialSanke -=1#tamnio acutal del snake para ver si perdio
+                    puntuacionMaxLevel -=1 #aumenta la puntacion para el siguiente nivel
 
                     ventana.addstr(headY,headX+1,"#")
                     listaDE.addFinal(headY,headX+1)
@@ -137,6 +139,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                 if headY == posicionYRandom and headX-1 == posicionXRandom and tipoFood==1: 
                     score +=1#puntuacion actual
                     tamanioInicialSanke +=1#tamnio acutal del snake para ver si perdio
+                    puntuacionMaxLevel +=1 #aumenta la puntacion para el siguiente nivel
                     
                     ventana.addstr(headY,headX-1,"#")
                     listaDE.addFinal(headY,headX-1)
@@ -155,6 +158,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                 elif headY == posicionYRandom and headX-1 == posicionXRandom and tipoFood==0:
                     score -=1#puntuacion actual
                     tamanioInicialSanke -=1#tamnio acutal del snake para ver si perdio
+                    puntuacionMaxLevel -=1 #aumenta la puntacion para el siguiente nivel
                     
                     ventana.addstr(headY,headX-1,"#")
                     listaDE.addFinal(headY,headX-1)
@@ -200,6 +204,8 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                 if headY-1 == posicionYRandom and headX == posicionXRandom and tipoFood==1: 
                     score +=1
                     tamanioInicialSanke +=1#tamnio acutal del snake para ver si perdio
+                    puntuacionMaxLevel +=1 #aumenta la puntacion para el siguiente nivel
+
                     
                     ventana.addstr(headY-1,headX,"#")
                     listaDE.addFinal(headY-1,headX)
@@ -218,6 +224,8 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                 elif headY-1 == posicionYRandom and headX == posicionXRandom and tipoFood==0:
                     score -=1#record acutal
                     tamanioInicialSanke -=1#tamnio acutal del snake para ver si perdio
+                    puntuacionMaxLevel -=1 #aumenta la puntacion para el siguiente nivel
+
                     
                     ventana.addstr(headY-1,headX,"#")
                     listaDE.addFinal(headY-1,headX)
@@ -341,6 +349,7 @@ def inicioSnake(usuario,listaDE,Pila):
     listaDE.addHead(10,39)
     listaDE.addHead(10,38)
     tamanioInicialSanke = 3
+    puntuacionMaxLevel = 0
     if usuario == "":
         screen = curses.initscr()
         curses.noecho()
@@ -351,10 +360,9 @@ def inicioSnake(usuario,listaDE,Pila):
         ventana.addstr(1,1,"Ingreses nombre de usuario : ")
         ventana.keypad(1)
         usuario = ventana.getstr()
-        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke)
+        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel)
         
 
     else:
         numFilas , numColum = screen.getmaxyx()
-        usuario = screen.getstr()
 

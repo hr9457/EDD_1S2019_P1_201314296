@@ -11,7 +11,7 @@ def menuReportes(ventana,X):
     ventana.addstr(11,X,"4. User (Lista Circular)")
 
 
-def reportes(listaDE,Pila):
+def reportes(listaDE,Pila,listaCDE):
     screen = curses.initscr()
     numFilas , numColum = screen.getmaxyx()
     Y = numFilas//2 
@@ -33,6 +33,12 @@ def reportes(listaDE,Pila):
 
         elif teclado == 50:
             Pila.imagenDot()
+
+        elif teclado == 51:
+            pass
+
+        elif teclado == 52:
+            listaCDE.imagenDot()
 
 
         teclado = ventana.getch()

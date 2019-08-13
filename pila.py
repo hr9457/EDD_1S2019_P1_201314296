@@ -59,6 +59,10 @@ class pila:
             print(primerElemento.posY)
             primerElemento = primerElemento.siguientePila
 
+    def vaciarPila(self):
+        self.primeropila == None
+        self.ultimoPila == None
+
 
     # metodo para graficar reporte de la pila
     def GraPila(self):
