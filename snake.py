@@ -28,7 +28,7 @@ def pintadoTituloVentana(ventana,score,usuario):
     ventana.addstr(0, 70, " User : "+nombre.replace("'","")+" ")
     
 
-def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInicialSanke):
+def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke):
     direccionSnake = -1
     fooRandom = ""
     tipoFood = ""
@@ -69,22 +69,36 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
                 
                 #si el snake come un punto correcto
                 if headY == posicionYRandom and headX+1 == posicionXRandom and tipoFood==1: 
-                    score +=1
+                    score +=1#puntuacion actual
+                    tamanioInicialSanke +=1#tamnio acutal del snake para ver si perdio
+
                     ventana.addstr(headY,headX+1,"#")
                     listaDE.addFinal(headY,headX+1)
                     ultimoEliminar = listaDE.colaLista
+
+                    #ingreso la comida # a la pila
+                    Pila.Push(posicionYRandom,posicionXRandom)
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
                     pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
 
+                    
+
                 #si el snake come un punto icorrecto
                 elif headY == posicionYRandom and headX+1 == posicionXRandom and tipoFood==0:
                     score -=1
+                    tamanioInicialSanke -=1#tamnio acutal del snake para ver si perdio
+
                     ventana.addstr(headY,headX+1,"#")
                     listaDE.addFinal(headY,headX+1)
                     ultimoEliminar = listaDE.colaLista
+
+                    #saco el ultimo elemento bueno que comio antes
+                    Pila.Pop()
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     listaDE.deletFinal()
                     listaDE.deletFinal()
@@ -121,10 +135,16 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
             if headX-1 != 1:
                 #si el snake come un punto correcto
                 if headY == posicionYRandom and headX-1 == posicionXRandom and tipoFood==1: 
-                    score +=1
+                    score +=1#puntuacion actual
+                    tamanioInicialSanke +=1#tamnio acutal del snake para ver si perdio
+                    
                     ventana.addstr(headY,headX-1,"#")
                     listaDE.addFinal(headY,headX-1)
                     ultimoEliminar = listaDE.colaLista
+
+                    #ingreso la comida # a la pila
+                    Pila.Push(posicionYRandom,posicionXRandom)
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
                     pintadoTituloVentana(ventana,score,usuario)
@@ -133,10 +153,16 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
 
                 #si el snake come un punto icorrecto
                 elif headY == posicionYRandom and headX-1 == posicionXRandom and tipoFood==0:
-                    score -=1
+                    score -=1#puntuacion actual
+                    tamanioInicialSanke -=1#tamnio acutal del snake para ver si perdio
+                    
                     ventana.addstr(headY,headX-1,"#")
                     listaDE.addFinal(headY,headX-1)
                     ultimoEliminar = listaDE.colaLista
+
+                    #saco el ultimo elemento bueno que comio antes
+                    Pila.Pop()
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     listaDE.deletFinal()
                     listaDE.deletFinal()
@@ -173,9 +199,15 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
                 #si el snake come un punto correcto
                 if headY-1 == posicionYRandom and headX == posicionXRandom and tipoFood==1: 
                     score +=1
+                    tamanioInicialSanke +=1#tamnio acutal del snake para ver si perdio
+                    
                     ventana.addstr(headY-1,headX,"#")
                     listaDE.addFinal(headY-1,headX)
                     ultimoEliminar = listaDE.colaLista
+                    
+                    #ingreso la comida # a la pila
+                    Pila.Push(posicionYRandom,posicionXRandom)
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
                     pintadoTituloVentana(ventana,score,usuario)
@@ -184,10 +216,16 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
 
                 #si el snake come un punto icorrecto
                 elif headY-1 == posicionYRandom and headX == posicionXRandom and tipoFood==0:
-                    score -=1
+                    score -=1#record acutal
+                    tamanioInicialSanke -=1#tamnio acutal del snake para ver si perdio
+                    
                     ventana.addstr(headY-1,headX,"#")
                     listaDE.addFinal(headY-1,headX)
                     ultimoEliminar = listaDE.colaLista
+
+                    #saco el ultimo elemento bueno que comio antes
+                    Pila.Pop()
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     listaDE.deletFinal()
                     listaDE.deletFinal()
@@ -223,10 +261,16 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
 
                 #si el snake come un punto correcto
                 if headY+1 == posicionYRandom and headX == posicionXRandom and tipoFood==1: 
-                    score +=1
+                    score +=1#record actual
+                    tamanioInicialSanke +=1#tamnio acutal del snake para ver si perdio
+                    
                     ventana.addstr(headY+1,headX,"#")
                     listaDE.addFinal(headY+1,headX)
                     ultimoEliminar = listaDE.colaLista
+                    
+                    #ingreso la comida # a la pila
+                    Pila.Push(posicionYRandom,posicionXRandom)
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
                     pintadoTituloVentana(ventana,score,usuario)
@@ -235,10 +279,16 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
 
                 #si el snake come un punto icorrecto
                 elif headY+1 == posicionYRandom and headX == posicionXRandom and tipoFood==0:
-                    score -=1
+                    score -=1#recrod actual
+                    tamanioInicialSanke -=1#tamnio acutal del snake para ver si perdio
+                    
                     ventana.addstr(headY+1,headX,"#")
                     listaDE.addFinal(headY+1,headX)
                     ultimoEliminar = listaDE.colaLista
+                                        
+                    #saco el ultimo elemento bueno que comio antes
+                    Pila.Pop()
+
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     listaDE.deletFinal()
                     listaDE.deletFinal()
@@ -272,18 +322,21 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,scoreSnake,tamanioInic
             listaDE.GraListasDobleEnlazada()
             listaDE.imagenDot()
 
-        
+        if tamanioInicialSanke==2:
+            break
         
         direccionSnake = -1
         direccionSnake = ventana.getch()
         ventana.refresh()
 
     curses.endwin()
+    listaDE.GraListasDobleEnlazada()
+    Pila.GraPila()
 #-------------------------------fin del juego-----------------------------------------------------------
 
 
 
-def inicioSnake(usuario,listaDE,ScorePila):
+def inicioSnake(usuario,listaDE,Pila):
     listaDE.addHead(10,40)
     listaDE.addHead(10,39)
     listaDE.addHead(10,38)
@@ -298,7 +351,7 @@ def inicioSnake(usuario,listaDE,ScorePila):
         ventana.addstr(1,1,"Ingreses nombre de usuario : ")
         ventana.keypad(1)
         usuario = ventana.getstr()
-        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,ScorePila,tamanioInicialSanke)
+        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke)
         
 
     else:

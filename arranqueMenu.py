@@ -5,6 +5,7 @@ import snake
 import subprocess
 import os 
 import cargaMasiva
+import ventanaReportes
 from listaCircular import listaCircularDoblementeEnlazada #para el uso de la carga masiva
 from listaDoblementeEnlazada import listaDobleEnlazada #par el reporte de las posicion del snake
 from pila import pila #para el score del snake
@@ -45,16 +46,19 @@ paint_menu(window)      #paint menu
 keystroke = -1
 while(keystroke==-1):
     keystroke = window.getch()  #get current key being pressed
+
+    #------------------------------ingreso al snake----------------------
     if(keystroke==49):
-        #---------------ingreso al snake----------------------
-        ScorePila = pila()
         listaDE = listaDobleEnlazada()
+        Pila = pila()
         usuario = ""
         window.refresh()
-        snake.inicioSnake(usuario,listaDE,ScorePila)
+        snake.inicioSnake(usuario,listaDE,Pila)
         paint_menu(window)
         keystroke=-1
-        #----------------Fin snake-----------------------------
+        #-------------------------Fin snake-----------------------------
+
+
     elif(keystroke==50):
         paint_title(window, ' SCOREBOARD ')
         wait_esc(window)
@@ -65,11 +69,19 @@ while(keystroke==-1):
         wait_esc(window)
         paint_menu(window)
         keystroke=-1
+
+    #----------------------------Reportes-----------------------------
     elif(keystroke==52):
-        paint_title(window, ' REPORTS ')
-        wait_esc(window)
+        listaDE = listaDobleEnlazada()
+        Pila = pila()
+        window.clear()
+        window.refresh()
+        ventanaReportes.reportes(listaDE,Pila)
         paint_menu(window)
         keystroke=-1
+
+
+
     elif(keystroke==53):
         #--------------------Carga masiva---------------------------
         listaCDE = listaCircularDoblementeEnlazada()

@@ -1,3 +1,4 @@
+import os
 # clase nodo
 # estructura del nodo
 class NodoPila:
@@ -93,6 +94,12 @@ class pila:
         archivo_texto.write("}\n")#cierre del grafo
         archivo_texto.close()#cierre del archivo
             
+
+    def imagenDot(self):
+        #creacon de la imagen dot
+        os.system("dot -Tpng  C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\Pila.txt -o C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\Pila.png ")
+        #apertura de la imagen dot
+        os.system("C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\Pila.png" )
 
 
 # clse de arranque
