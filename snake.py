@@ -29,12 +29,13 @@ def pintadoTituloVentana(ventana,score,usuario):
     ventana.addstr(0,40," SNAKE RELOADED ")
     nombre = str(usuario).replace("b'","")
     ventana.addstr(0, 70, " User : "+nombre.replace("'","")+" ")
+    return nombre
 #-------------------------------------------------------------------------------------------------------------
     
 
 
 #--------pintado del snake y jugabilidad ----------------------------------------------------------------------
-def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke):
+def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke,cola):
     direccionSnake = -1
     fooRandom = ""
     tipoFood = ""
@@ -45,7 +46,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
     curses.curs_set(0)
 
     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-    pintadoTituloVentana(ventana,score,usuario)
+    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
 
     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
     
@@ -95,7 +96,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
 
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
 
@@ -118,7 +119,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                     listaDE.deletFinal()
                     listaDE.deletFinal()
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
                 
@@ -163,7 +164,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
 
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
 
@@ -184,7 +185,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                     listaDE.deletFinal()
                     listaDE.deletFinal()
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
                 
@@ -229,7 +230,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
 
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
 
@@ -251,7 +252,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                     listaDE.deletFinal()
                     listaDE.deletFinal()
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
                 
@@ -294,7 +295,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
 
                     ventana.addstr(ultimoEliminar.posX,ultimoEliminar.posY," ")
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
 
@@ -314,7 +315,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                     listaDE.deletFinal()
                     listaDE.deletFinal()
                     #codigo anterio pintadoTituloVentana - repinta el titulo por algun cambie en el score
-                    pintadoTituloVentana(ventana,score,usuario)
+                    nombreJugador = pintadoTituloVentana(ventana,score,usuario)
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
                 
@@ -368,10 +369,13 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
         #refresca la pantalla para los cambios que se realizaron
         ventana.refresh()
 
+
+    
     curses.endwin()#termina el proces de l ventana de snake
     #generacion de escritura para genera los reportes
     listaDE.GraListasDobleEnlazada()
     Pila.GraPila()
+    cola.addCola(nombreJugador,score)
 #-------------------------------fin del juego-----------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------
 
@@ -379,7 +383,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
 
 
 #--------------------------Ventana de arranque - verificacion de usuario---------------------------------------
-def inicioSnake(usuario,listaDE,Pila):
+def inicioSnake(usuario,listaDE,Pila,cola):
     #----------Posiciones inciales del snake al comienzo de un juego-------------
     listaDE.addHead(10,40)
     listaDE.addHead(10,39)
@@ -398,7 +402,7 @@ def inicioSnake(usuario,listaDE,Pila):
         ventana.addstr(1,1,"Ingreses nombre de usuario : ")
         ventana.keypad(1)
         usuario = ventana.getstr()
-        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke)
+        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke,cola)
         
 
     else:

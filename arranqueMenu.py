@@ -2,6 +2,7 @@ import curses #import the curses library
 import time
 from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN #import special KEYS from the curses library
 import snake
+import ventanUltimosRecord
 import subprocess
 import os 
 import cargaMasiva
@@ -10,6 +11,9 @@ from listaCircular import listaCircularDoblementeEnlazada #para el uso de la car
 from listaDoblementeEnlazada import listaDobleEnlazada #par el reporte de las posicion del snake
 from pila import pila #para el score del snake
 from Cola import Cola #para mostra las primeras 10 puntuaciones
+
+
+
 
 def paint_menu(win):
     paint_title(win,' MAIN MENU ')          #paint title
@@ -42,9 +46,11 @@ paint_menu(window)      #paint menu
 
 
 
+cola = Cola()
 
 keystroke = -1
 while(keystroke==-1):
+     
     keystroke = window.getch()  #get current key being pressed
 
     #------------------------------ingreso al snake----------------------
@@ -53,17 +59,22 @@ while(keystroke==-1):
         Pila = pila()
         usuario = ""
         window.refresh()
-        snake.inicioSnake(usuario,listaDE,Pila)
+        snake.inicioSnake(usuario,listaDE,Pila,cola)
         paint_menu(window)
         keystroke=-1
         #-------------------------Fin snake-----------------------------
 
 
+    #------------------------------RECORDS-------------------------------
     elif(keystroke==50):
-        paint_title(window, ' SCOREBOARD ')
-        wait_esc(window)
+        
+        window.refresh()
+        ventanUltimosRecord.reportes(cola)
         paint_menu(window)
         keystroke=-1
+    #--------------------------------------------------------------------
+
+    #--------------------------------------------------------------------
     elif(keystroke==51):
         paint_title(window, ' USER SELECTION ')
         wait_esc(window)
@@ -75,7 +86,6 @@ while(keystroke==-1):
         listaDE = listaDobleEnlazada()
         Pila = pila()
         listaCDE = listaCircularDoblementeEnlazada()
-
         window.clear()
         window.refresh()
         ventanaReportes.reportes(listaDE,Pila,listaCDE)
@@ -93,6 +103,7 @@ while(keystroke==-1):
         paint_menu(window)
         keystroke=-1
         #----------------Fin Carga Masiva----------------------------
+    
     elif(keystroke==54):
         pass
     else:

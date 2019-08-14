@@ -25,7 +25,7 @@ class Cola:
 
     # metodo para agregar en la cola
     def addCola(self,nombreUsuario,score):
-        if self.primeroCola == None and self.ultimoCola == None:
+        if self.primeroCola == None and self.ultimoCola==None:
             # creacion de un nuevo nodo
             nuevoNodo = Nodo(nombreUsuario,score)
             self.primeroCola = nuevoNodo
@@ -130,5 +130,6 @@ class Cola:
         #apertura de la imagen dot
         os.system("C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\Cola.png" )
     #-------------------------------------------------------------------------------------------------
+
 
 

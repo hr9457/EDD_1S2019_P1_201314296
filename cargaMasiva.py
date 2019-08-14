@@ -36,6 +36,7 @@ def ventanaCargaMasiva(listaCDE):
     #matiene abierto mientras teclas sean diferentes a la teclas esc
     teclado = ventana.getch()
     while teclado !=27: 
+
         if teclado == 260:
             ventana.clear()
             ventana.border(0)
@@ -46,6 +47,7 @@ def ventanaCargaMasiva(listaCDE):
             ventana.addstr(Y+2,X-6," Selecionar (Enter) ")
             ventana.addstr(Y+3,X-3," Salir (Esc) ")
             ventana.refresh()
+
         elif teclado == 261:
             ventana.clear()
             ventana.border(0)
@@ -56,6 +58,7 @@ def ventanaCargaMasiva(listaCDE):
             ventana.addstr(Y+2,X-6," Selecionar (Enter) ")
             ventana.addstr(Y+3,X-3," Salir (Esc) ")
             ventana.refresh()
+            
         elif teclado == 10:
             pass
         
