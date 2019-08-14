@@ -1,3 +1,4 @@
+import os
 # importaciones
 # importacion para lectura y escritura de un archivo
 from io import *
@@ -10,6 +11,7 @@ class Nodo:
         self.nombreUsuario = nombreUsuario
         self.score = score
         self.siguienteCola = None
+#-------------------------------------------------------------------------------------------------
 
 # estructura de la cola
 # clase cola
@@ -19,6 +21,7 @@ class Cola:
         self.primeroCola = None
         self.ultimoCola = None
         self.sizeCola = 0
+    #-------------------------------------------------------------------------------------------------
 
     # metodo para agregar en la cola
     def addCola(self,nombreUsuario,score):
@@ -34,6 +37,7 @@ class Cola:
             self.ultimoCola.siguienteCola = nuevoNodo
             self.ultimoCola = nuevoNodo
             self.sizeCola += 1
+    #-------------------------------------------------------------------------------------------------
 
 
     # metodo para elminar de la cola
@@ -47,11 +51,13 @@ class Cola:
         else:
             self.primeroCola = self.primeroCola.siguienteCola
             self.sizeCola -= 1
+    #-------------------------------------------------------------------------------------------------
 
 
     #  get tamaniio de la cola actual
     def getSizeCola(self):
         return self.sizeCola
+    #-------------------------------------------------------------------------------------------------
 
 
     # metodo para imprimir la cola
@@ -64,8 +70,11 @@ class Cola:
             print(primeroTemporal.nombreUsuario)
             primeroTemporal = primeroTemporal.siguienteCola
             temporalSize -= 1
+    #-------------------------------------------------------------------------------------------------
 
 
+
+    #---------------Escritura del reporte de la cola--------------------------------------
     def GraCola(self):
         #-----------------------------------------------------------------------------------------------------
         #lectura del archivo y limpiado del archivo
@@ -110,20 +119,16 @@ class Cola:
         archivo_texto.write("}\n")#
         archivo_texto.write("}\n")#
         archivo_texto.close()#cierre del archivo
+    #-------------------------------------------------------------------------------------------------
 
 
-""""
-if __name__ == "__main__":
-    c = Cola()
-    c.addCola("hector","1")
-    c.addCola("josue","2")
-    c.addCola("orozco","3")
-    print("el tamanio de la cola es: " + str( c.getSizeCola()) )
-    c.printCola()
-    c.unqueued()
-    print("el tamanio de la cola es: " + str( c.getSizeCola()) )
-    c.printCola()
-    c.addCola("hector","1")
-    c.GraCola()
-    """""
+
+    #-----------apertura del reporte que se genero------------------------------------------------------------
+    def imagenDot(self):
+        #creacon de la imagen dot
+        os.system("dot -Tpng  C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\Cola.txt -o C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\Cola.png ")
+        #apertura de la imagen dot
+        os.system("C:\\Users\\HECTOR\\Documents\\EDD\\EDD_1S2019_P1_201314296\\Cola.png" )
+    #-------------------------------------------------------------------------------------------------
+
 

@@ -60,8 +60,9 @@ class pila:
             primerElemento = primerElemento.siguientePila
 
     def vaciarPila(self):
-        self.primeropila == None
-        self.ultimoPila == None
+        vaciadoPila = 4
+        while vaciadoPila >= 1:
+            Pop()
 
 
     # metodo para graficar reporte de la pila

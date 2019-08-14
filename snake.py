@@ -34,7 +34,7 @@ def pintadoTituloVentana(ventana,score,usuario):
 
 
 #--------pintado del snake y jugabilidad ----------------------------------------------------------------------
-def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel):
+def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke):
     direccionSnake = -1
     fooRandom = ""
     tipoFood = ""
@@ -50,13 +50,14 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
     
     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
-    ventana.timeout(150)#tiempor actualizacion me puede servir para los niveles en el snake
+    #ventana.timeout(velocidadSanke)#tiempor actualizacion me puede servir para los niveles en el snake
 
     
     direccionSnake = 261
     #ciclo que mantiene jugando al snake mientra sea diferente de esc=27 
     while direccionSnake !=27:
-        
+        #----------Velocidad en en el tiempo de refresh() en lapantalla - velocidad snake
+        ventana.timeout(velocidadSanke)
         
         #pintado del snake desde la cola hacia la cabeza de la lista - actualizacion de la pintado
         sizeTemporal = listaDE.getSizeLista()
@@ -346,14 +347,28 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
             break
         
 
-        #direccionSnake = -1
+        #mantiene a la escucha del algun cambio desde el teclado para cambio de direccion
+        # salir o pusa
         cambioSnake = ventana.getch()
         if cambioSnake==258 or cambioSnake==259 or cambioSnake==260 or cambioSnake==261 or cambioSnake ==27 or cambioSnake==112:
             direccionSnake = cambioSnake
+
+        #------------Para el aumento de niveles - aumenta el tiempo de respuesta del snake
+        if puntuacionMaxLevel == 15:
+            puntuacionMaxLevel = 0
+            vaciadoPila = 14
+            while vaciadoPila >= 1:
+                vaciadoPila -=1
+                Pila.Pop()
+            #cambio en la velocidad del snake    
+            velocidadSanke = velocidadSanke - 20
             
+            
+        #velocidadSanke +=100
+        #refresca la pantalla para los cambios que se realizaron
         ventana.refresh()
 
-    curses.endwin()
+    curses.endwin()#termina el proces de l ventana de snake
     #generacion de escritura para genera los reportes
     listaDE.GraListasDobleEnlazada()
     Pila.GraPila()
@@ -365,11 +380,14 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
 
 #--------------------------Ventana de arranque - verificacion de usuario---------------------------------------
 def inicioSnake(usuario,listaDE,Pila):
+    #----------Posiciones inciales del snake al comienzo de un juego-------------
     listaDE.addHead(10,40)
     listaDE.addHead(10,39)
     listaDE.addHead(10,38)
+    #----------------------------------------------------------------------------
     tamanioInicialSanke = 3
     puntuacionMaxLevel = 0
+    velocidadSanke = 100
     if usuario == "":
         screen = curses.initscr()
         curses.noecho()
@@ -380,7 +398,7 @@ def inicioSnake(usuario,listaDE,Pila):
         ventana.addstr(1,1,"Ingreses nombre de usuario : ")
         ventana.keypad(1)
         usuario = ventana.getstr()
-        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel)
+        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke)
         
 
     else:
