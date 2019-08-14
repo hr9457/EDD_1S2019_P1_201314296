@@ -399,7 +399,7 @@ def inicioSnake(usuario,listaDE,Pila,cola):
     velocidadSanke = 100
     if usuario == "":
         screen = curses.initscr()
-        curses.noecho()
+        curses.echo()#habila la escritura en la pantalla
         curses.curs_set(1)
         numFilas , numColum = screen.getmaxyx()
         #usuario = screen.getstr()
@@ -407,10 +407,17 @@ def inicioSnake(usuario,listaDE,Pila,cola):
         ventana.addstr(1,1,"Ingreses nombre de usuario : ")
         ventana.keypad(1)
         usuario = ventana.getstr()
+        curses.noecho()#desabilito la entrada por pantalla
         dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke,cola)
         
 
     else:
+        screen = curses.initscr()
+        curses.echo()#desabilita la escritura en pantalla
+        curses.curs_set(1)
         numFilas , numColum = screen.getmaxyx()
+        ventana = curses.newwin(numFilas, numColum, 0, 0)
+        ventana.keypad(1)
+        dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSanke,puntuacionMaxLevel,velocidadSanke,cola)
 #-------------------------------------------------------------------------------------------------------------
 

@@ -7,6 +7,7 @@ import subprocess
 import os 
 import cargaMasiva
 import ventanaReportes
+import cargaArchivo
 from listaCircular import listaCircularDoblementeEnlazada #para el uso de la carga masiva
 from listaDoblementeEnlazada import listaDobleEnlazada #par el reporte de las posicion del snake
 from pila import pila #para el score del snake
@@ -19,9 +20,9 @@ def paint_menu(win):
     paint_title(win,' MAIN MENU ')          #paint title
     win.addstr(7,50, '1. Play')             #paint option 1
     win.addstr(8,50, '2. Scoreboard')       #paint option 2
-    win.addstr(9,50, '3. User Selection')   #paint option 3
+    win.addstr(9,50, '3. Carga de archivo')   #paint option 3
     win.addstr(10,50, '4. Reports')         #paint option 4
-    win.addstr(11,50, '5. Bulk Loading')    #paint option 5
+    win.addstr(11,50, '5. Select user')    #paint option 5
     win.addstr(12,50, '6. Exit')            #paint option 6
     win.timeout(-1)                         #espera una entrada por consola
 
@@ -47,7 +48,7 @@ paint_menu(window)      #paint menu
 
 
 cola = Cola()
-
+usuario = ""
 keystroke = -1
 while(keystroke==-1):
      
@@ -57,7 +58,6 @@ while(keystroke==-1):
     if(keystroke==49):
         listaDE = listaDobleEnlazada()
         Pila = pila()
-        usuario = ""
         window.refresh()
         snake.inicioSnake(usuario,listaDE,Pila,cola)
         paint_menu(window)
@@ -67,7 +67,6 @@ while(keystroke==-1):
 
     #------------------------------RECORDS-------------------------------
     elif(keystroke==50):
-        
         window.refresh()
         ventanUltimosRecord.reportes(cola)
         paint_menu(window)
@@ -76,10 +75,12 @@ while(keystroke==-1):
 
     #--------------------------------------------------------------------
     elif(keystroke==51):
-        paint_title(window, ' USER SELECTION ')
-        wait_esc(window)
+        window.refresh()
+        cargaArchivo.carga()
         paint_menu(window)
         keystroke=-1
+    #--------------------------------------------------------------------
+
 
     #----------------------------Reportes-----------------------------
     elif(keystroke==52):
@@ -91,18 +92,18 @@ while(keystroke==-1):
         ventanaReportes.reportes(listaDE,Pila,listaCDE)
         paint_menu(window)
         keystroke=-1
-
+    #--------------------------------------------------------------------
 
 
     elif(keystroke==53):
-        #--------------------Carga masiva---------------------------
+        #--------------------Muestra usuarios de una lista circular---------------------------
         listaCDE = listaCircularDoblementeEnlazada()
         window.clear()
         window.refresh()
-        cargaMasiva.ventanaCargaMasiva(listaCDE)
+        usuario = cargaMasiva.ventanaCargaMasiva(listaCDE)
         paint_menu(window)
         keystroke=-1
-        #----------------Fin Carga Masiva----------------------------
+        #----------------------Fin Carga Masiva-----------------------------------------------
     
     elif(keystroke==54):
         pass

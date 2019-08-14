@@ -44,7 +44,6 @@ def ventanaCargaMasiva(listaCDE):
             usuarios = usuarios.anteriorLCDE
             valor = str(usuarios.nombreUsuario).replace("['","")
             ventana.addstr(Y,posNombresUsuarios," <--- " +valor.replace("']","")+" ---> " )
-            ventana.addstr(Y+2,X-6," Selecionar (Enter) ")
             ventana.addstr(Y+3,X-3," Salir (Esc) ")
             ventana.refresh()
 
@@ -55,17 +54,20 @@ def ventanaCargaMasiva(listaCDE):
             usuarios = usuarios.siguienteLCDE
             valor = str(usuarios.nombreUsuario).replace("['","")
             ventana.addstr(Y,posNombresUsuarios," <--- " +valor.replace("']","")+" ---> " )
-            ventana.addstr(Y+2,X-6," Selecionar (Enter) ")
             ventana.addstr(Y+3,X-3," Salir (Esc) ")
             ventana.refresh()
             
         elif teclado == 10:
+            return valor
             pass
         
         teclado = ventana.getch()
+        if teclado ==10:
+            break
         telado = -1
         ventana.refresh()
 
     curses.endwin()
+    return ""
     listaCDE.GraCircular()
 
