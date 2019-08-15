@@ -123,6 +123,7 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
                     #codigo anteriorcomidaRandom - para genera la comida aletroriamente en la pantalla
                     posicionYRandom , posicionXRandom, tipoFood = ComidaRandom(numFilas,numColum,ventana)
                 
+
                 #si no hay nada por delante que siga
                 else:
                     ventana.addstr(headY,headX+1,"#")

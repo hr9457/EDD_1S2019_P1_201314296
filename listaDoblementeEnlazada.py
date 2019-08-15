@@ -89,7 +89,6 @@ class listaDobleEnlazada:
             temporal = None
             self.sizeListaDoble -= 1
 
-
     # metodo para imprimir la lista enlzada doble
     def printLista(self):
         nodoTemporal = self.colaLista

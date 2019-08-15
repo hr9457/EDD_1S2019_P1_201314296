@@ -1,5 +1,5 @@
 digraph structs {
 rankdir = LR;
 node[shape=record];
-struct[ label = " | "]
+struct[ label = " | 24,20|20,109"]
 }
