@@ -89,6 +89,16 @@ class listaDobleEnlazada:
             temporal = None
             self.sizeListaDoble -= 1
 
+    def buscar(self,y,x):
+        aux = self.cabezaLista
+        while aux != None:
+            if aux.posX==y and aux.posY==x:
+                return True
+            aux = aux.siguiente
+        return False
+
+
+
     # metodo para imprimir la lista enlzada doble
     def printLista(self):
         nodoTemporal = self.colaLista
