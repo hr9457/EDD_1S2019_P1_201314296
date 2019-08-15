@@ -12,7 +12,7 @@ def menuReportes(ventana,X):
     ventana.addstr(13,X,"5. Salir (Esc)")
 
 
-def reportes(listaDE,Pila,listaCDE):
+def reportes(listaDE,Pila,listaCDE,cola):
     screen = curses.initscr()
     numFilas , numColum = screen.getmaxyx()
     Y = numFilas//2 
@@ -28,16 +28,22 @@ def reportes(listaDE,Pila,listaCDE):
     #matiene abierto mientras teclas sean diferentes a la teclas esc
     teclado = ventana.getch()
     while teclado !=27:
+
         #opcion uno de reportes
+        #--------Reporte del sanke--------------------
         if teclado == 49:
             listaDE.imagenDot()
 
+        #---------Reporte de la pila(Score)-----------
         elif teclado == 50:
             Pila.imagenDot()
 
+        #---------Reporte del Scoreboard(Cola)----------
         elif teclado == 51:
-            pass
+            cola.GraCola()
+            cola.imagenDot()
 
+        #---------Reporte de Lista Circular-----------
         elif teclado == 52:
             listaCDE.imagenDot()
 

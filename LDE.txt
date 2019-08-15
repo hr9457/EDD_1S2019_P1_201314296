@@ -2,13 +2,16 @@ digraph{
 rankdir=LR;
 subgraph cluster_0{node[shape=record]
  NodoNull[ label = " {null} " ]; 
- Nodo0 [label= " {| 15,39 |} " ];
- Nodo1 [label= " {| 15,38 |} " ];
+ Nodo0 [label= " {| 10,44 |} " ];
+ Nodo1 [label= " {| 10,45 |} " ];
+ Nodo2 [label= " {| 10,46 |} " ];
  NodoNull->Nodo0 
  Nodo0->NodoNull 
  Nodo0-> Nodo1
  Nodo1->Nodo0
- Nodo1->Null
+ Nodo1-> Nodo2
+ Nodo2->Nodo1
+ Nodo2->Null
 label = "Lista Doblemente Enlazada";
 }
 }

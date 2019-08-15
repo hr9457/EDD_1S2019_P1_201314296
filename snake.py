@@ -375,12 +375,13 @@ def dibujoSnake(ventana,usuario,numFilas,numColum,listaDE,Pila,tamanioInicialSan
     #generacion de escritura para genera los reportes
     listaDE.GraListasDobleEnlazada()
     Pila.GraPila()
-    tamanioCola = cola.getSizeCola()
-    if tamanioCola <= 10:
+    tamanioCola = cola.sizeCola
+    if tamanioCola < 10:
         cola.addCola(nombreJugador,score)
-    else:
+    elif tamanioCola >=10:
+        cola.addCola(nombreJugador,score)
         cola.unqueued()
-        cola.addCola(nombreJugador,score)
+        
 #-------------------------------fin del juego-----------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------
 

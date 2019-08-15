@@ -22,8 +22,7 @@ def paint_menu(win):
     win.addstr(8,50, '2. Scoreboard')       #paint option 2
     win.addstr(9,50, '3. Carga de archivo')   #paint option 3
     win.addstr(10,50, '4. Reports')         #paint option 4
-    win.addstr(11,50, '5. Select user')    #paint option 5
-    win.addstr(12,50, '6. Exit')            #paint option 6
+    win.addstr(11,50, '5. Exit')            #paint option 6
     win.timeout(-1)                         #espera una entrada por consola
 
 def paint_title(win,var):
@@ -73,10 +72,13 @@ while(keystroke==-1):
         keystroke=-1
     #--------------------------------------------------------------------
 
-    #--------------------------------------------------------------------
+
+    #--------------------------Cargar Archivo-----------------------------
     elif(keystroke==51):
+        listaCDE = listaCircularDoblementeEnlazada()
+        window.clear()
         window.refresh()
-        cargaArchivo.carga()
+        usuario = cargaMasiva.ventanaCargaMasiva(listaCDE)
         paint_menu(window)
         keystroke=-1
     #--------------------------------------------------------------------
@@ -89,23 +91,13 @@ while(keystroke==-1):
         listaCDE = listaCircularDoblementeEnlazada()
         window.clear()
         window.refresh()
-        ventanaReportes.reportes(listaDE,Pila,listaCDE)
+        ventanaReportes.reportes(listaDE,Pila,listaCDE,cola)
         paint_menu(window)
         keystroke=-1
     #--------------------------------------------------------------------
 
-
-    elif(keystroke==53):
-        #--------------------Muestra usuarios de una lista circular---------------------------
-        listaCDE = listaCircularDoblementeEnlazada()
-        window.clear()
-        window.refresh()
-        usuario = cargaMasiva.ventanaCargaMasiva(listaCDE)
-        paint_menu(window)
-        keystroke=-1
-        #----------------------Fin Carga Masiva-----------------------------------------------
     
-    elif(keystroke==54):
+    elif(keystroke==53):
         pass
     else:
         keystroke=-1

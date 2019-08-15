@@ -1,31 +1,8 @@
 digraph{
 rankdir=LR;
-subgraph cluster_0{node[shape=record]
- Nodo0 [label= " {| ['hector'] |} " ];
- Nodo1 [label= " {| ['Usuario'] |} " ];
- Nodo2 [label= " {| ['victor'] |} " ];
- Nodo3 [label= " {| ['mario'] |} " ];
- Nodo4 [label= " {| ['josue'] |} " ];
- Nodo5 [label= " {| ['carlos'] |} " ];
- Nodo6 [label= " {| ['randy'] |} " ];
- Nodo7 [label= " {| ['dennis'] |} " ];
- Nodo8 [label= " {| ['maria'] |} " ];
- Nodo0-> Nodo1
- Nodo1->Nodo0
- Nodo1-> Nodo2
- Nodo2->Nodo1
- Nodo2-> Nodo3
- Nodo3->Nodo2
- Nodo3-> Nodo4
- Nodo4->Nodo3
- Nodo4-> Nodo5
- Nodo5->Nodo4
- Nodo5-> Nodo6
- Nodo6->Nodo5
- Nodo6-> Nodo7
- Nodo7->Nodo6
- Nodo7-> Nodo8
- Nodo8->Nodo7
-label = "Lista Cirular";
+subgraph cluster_0{color = lightgrey; node[shape=record]
+Nodo0[label=" { hector',1 | } "];
+Nodo0->Null
+label = " Cola ";
 }
 }

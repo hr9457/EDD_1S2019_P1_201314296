@@ -49,7 +49,9 @@ class Cola:
             self.ultimoCola = None
             self.sizeCola -= 1
         else:
+            temporal = self.primeroCola
             self.primeroCola = self.primeroCola.siguienteCola
+            temporal = None
             self.sizeCola -= 1
     #-------------------------------------------------------------------------------------------------
 

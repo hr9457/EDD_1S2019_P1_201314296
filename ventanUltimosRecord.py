@@ -15,6 +15,7 @@ def listadoDeRecords(ventana,X,cola):
     else:
         while tamanioCola > 0:
             ventana.addstr(Y,X,""+str(usuarios.nombreUsuario)+"         "+str(usuarios.score))
+            usuarios = usuarios.siguienteCola
             Y += 1
             tamanioCola -= 1
 
